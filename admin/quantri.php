@@ -49,6 +49,7 @@
 					<li><a href="quantri.php?page=khoa-hoc"><em class="fa fa-bookmark fa-lg">&nbsp;</em> Khóa học</a></li>
 					<li><a href="quantri.php?page=thanh-vien"><em class="fa fa-users fa-lg">&nbsp;</em> Thành viên</a></li>
 					<li><a href="quantri.php?page=video-bai-giang"><em class="fa fa-youtube fa-lg">&nbsp;</em> Video bài giảng</a></li>
+					<li><a href="quantri.php?page=cmt"><em class="fa fa-youtube fa-lg">&nbsp;</em> Bình Luận</a></li>
 					
 				<li><a href="login.html"><em class="fa fa-power-off fa-lg">&nbsp;</em> Logout</a></li>
 			</ul>
@@ -69,6 +70,9 @@
 					break;
 					case 'video-bai-giang':
 					include_once './layout/video-bai-giang.php';
+					break;
+					case 'cmt':
+					include_once './layout/cmt.php';
 					break;
 
 				}
