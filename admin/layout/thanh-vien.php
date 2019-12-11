@@ -1,3 +1,13 @@
+<script>
+    function xoaDanhMuc(){
+        var conf=confirm("Bạn có chắc chắn muốn xóa danh mục này hay không?");
+        return conf;
+    }
+</script>
+<?php 
+	$sql = "SELECT * FROM thanhvien";
+	$query = mysqli_query($conn,$sql);
+ ?>
 	<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
@@ -15,7 +25,7 @@
 	<!-- Grid column -->
 </div>
 <hr>
-<span class="btn btn-warning">Thêm mới +</span><br/><br/>
+	<a href="index.php?page_layout=add-thanhvien"><span class="btn btn-warning">Thêm mới +</span></a><br/><br/>
 <table class="table table-hover table-responsive mb-0" id="table">
 	<!--Table head-->
 	<thead>
@@ -24,8 +34,8 @@
 			<th class="th-lg">Tên thành viên</th>
 			<th class="th-lg">Email</th>
 			<th class="th-lg">Số điện thoại</th>
-			<th class="th-lg">Trạng thái</th>
-			<th class="th-lg">Ngày khai giảng</th>
+			
+			<th class="th-lg">Mật khẩu</th>
 
 			<th class="th-lg" colspan="2">Tùy Chọn</th>
 
@@ -35,30 +45,20 @@
 	<!--Table head-->
 	<!--Table body-->
 	<tbody>
+		<?php while ($row = mysqli_fetch_array($query)) {
+		 ?>
 		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>thanhnguyen@gmail.com</td>
-			<td>0377457626</td>
-			<td><span class="label label-success">Đã duyệt</span></td>
-			<td>20/11/2019</td>
-			<td><a href="#"><button type="button"class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
-			<td><a href="#"><button type="button"class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></a></td>
+			<th scope="row"><?php echo $row['id']; ?></th>
+			<td><?php echo $row['ten_tv']; ?></td>
+			<td><?php echo $row['email']; ?></td>
+			<td><?php echo $row['sdt']; ?></td>
+			<td><?php echo $row['pass']; ?></td>
+			
+			<td><a  onClick="return xoaDanhMuc();" href="index.php?page_layout=xoa-thanhvien&id=<?php echo $row['id'] ?>"><button type="button"class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></a></td>
 
 
 		</tr>
-		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>thanhnguyen@gmail.com</td>
-			<td>0377457626</td>
-			<td><span class="label label-warning">Đang chờ</span></td>
-			<td>20/11/2019</td>
-			<td><a href="#"><button type="button"class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
-			<td><a href="#"><button type="button"class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></a></td>
-
-
-		</tr>
+		<?php } ?>
 
 
 

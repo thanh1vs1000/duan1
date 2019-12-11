@@ -2,8 +2,16 @@
 		$dbHost="localhost";
 		$dbUser="root";
 		$dbPass="";
-		$dbName="php1";
+		$dbName="webtienganh";
 
-		$conn=mysqli_connect($dbHost,$dbUser,$dbPass,$dbName)or die("lỗi kết nối");
+		$conn=mysqli_connect($dbHost,$dbUser,$dbPass,$dbName);
+if ($conn) {
+	$setLang = mysqli_query($conn,"SET NAMES 'utf8'");
+}
+else{
+	die("Kết nối thất bại".mysqli_connect_error());
+}
+?>
+
 
 	?>

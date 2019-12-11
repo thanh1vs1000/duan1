@@ -1,3 +1,18 @@
+	<script type="text/javascript">
+			function xoaDanhMuc(){
+        var conf=confirm("Bạn có chắc chắn muốn xóa danh mục này hay không?");
+        return conf;
+    }
+
+
+	</script>
+
+	<?php 
+		$sql = "SELECT * FROM cmt INNER JOIN block_khoahoc ON cmt.id_block=block_khoahoc.id";
+		$query  = mysqli_query($conn,$sql);
+	 ?>
+
+
 	<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
@@ -22,7 +37,7 @@
 		<tr>
 			<th scope="row">ID Bình luận</th>
 			<th class="th-lg">Tên Thành viên</th>
-			<th class="th-lg">Video</th>
+			<th class="th-lg">Khối học</th>
 			<th class="th-lg">Nội dung</th>
 
 			<th class="th-lg" colspan="2">Tùy Chọn</th>
@@ -33,17 +48,23 @@
 	<!--Table head-->
 	<!--Table body-->
 	<tbody>
+		<?php while ($row = mysqli_fetch_array($query)) {
+		
+		 ?>
 		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td><img src="#"></td>
-			<td>Rất ổn</td>
+			<th scope="row"><?php echo $row['id_cmt'] ?></th>
+			<td><?php echo $row['ten_tv'] ?></td>
+			<td><?php echo $row['ten_block'] ?></td>
+			<td><?php echo $row['nd_cmt'] ?></td>
 			
 			<!-- <td><a href="#"><button type="button"class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td> -->
-			<td><a href="#"><button type="button"class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></a></td>
-
-
+			<td><a onClick="return xoaDanhMuc();" href="index.php?page_layout=xoa-cmt&id=<?php echo $row['id_cmt'] ?>"><button type="button"class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></a>
+			</td>
 		</tr>
+
+		<?php
+		 } 
+		 ?>
 
 
 

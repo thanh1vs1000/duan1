@@ -1,5 +1,37 @@
+<?php 
+if (isset($_SESSION['dangnhap'])) {
+  header('location:index.php?page=khoa-hoc-user');}
+  else{
+  if (isset($_POST["dangnhap"])) {
+    $email=$_POST["email"];
+    $pass=$_POST["pass"];
+    $email = strip_tags($email);
+    $email = addslashes($email);
+    $pass = strip_tags($pass);
+    $pass = addslashes($pass);
+    if ($email == "" || $pass =="") {
+        echo "email hoặc password bạn không được để trống!";
+    }else{
+        $sql = "SELECT * from thanhvien where email = '$email' and pass = '$pass' ";
+        echo $sql;
+        $query = mysqli_query($conn,$sql);
+        $num_rows = mysqli_num_rows($query);
+        if ($num_rows==0) {
+            echo "tên đăng nhập hoặc mật khẩu không đúng !";
+        }else{
+                //tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
+            $_SESSION['dangnhap'] = $email;
+                // Thực thi hành động sau khi lưu thông tin vào session
+                // ở đây mình tiến hành chuyển hướng trang web tới một trang gọi là index.php
+            header('location: index.php');
+        }
+    }
+}
+}
+?>
 
-      <link rel="stylesheet" type="text/css" href="css/cssrieng.css">
+
+<link rel="stylesheet" type="text/css" href="css/cssrieng.css">
 <div class="wrapper fadeInDown">
 <div id="formContent">
   <!-- Tabs Titles -->
@@ -8,14 +40,15 @@
 
   <!-- Icon -->
   <div class="fadeIn first">
-    <a href="index.php"><img src="https://web.getmonero.org/press-kit/symbols/monero-symbol-800.png" width="50" height="50"></a>
+  <img src="img/haha.png" width="300" height="70" 
+            />
   </div>
 
   <!-- Login Form -->
-  <form>
-    <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-    <input type="submit" class="fadeIn fourth" value="Log In">
+  <form method="post">
+    <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
+    <input type="password" id="password" class="fadeIn third" name="pass" placeholder="Mật khẩu">
+    <input type="submit" class="fadeIn fourth" name="dangnhap" value="Đăng nhập">
   </form>
 
   <!-- Remind Passowrd -->

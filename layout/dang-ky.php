@@ -1,3 +1,19 @@
+<?php 
+    if (isset($_POST["submit"])) {
+    $ten_tv=$_POST["ten_tv"];
+      $email=$_POST["email"];
+        $sdt=$_POST["sdt"];
+          $pass=$_POST["pass"];
+    
+    $sql="INSERT INTO thanhvien(ten_tv,email,sdt,pass) VALUES('$ten_tv','$email','$sdt','$pass')";
+    mysqli_query($conn,$sql) or die("loi ket noi") ;
+    header('location: index.php');
+ }
+
+ ?>
+
+
+
  <div class="section_gap registration_area">
       <div class="container">
         <div class="row align-items-center">
@@ -29,26 +45,25 @@
           </div>
           <div class="col-lg-4 offset-lg-1">
             <div class="register_form">
-              <h3>Các khóa học miễn phí</h3>
+              <h3>Tham gia khóa học miễn phí ngay</h3>
               <p>Đó là thời gian cao cho việc học</p>
               <form
-                class="form_area"
-                id="myForm"
-                action="mail.html"
+                
                 method="post"
               >
                 <div class="row">
                   <div class="col-lg-12 form_group">
                     <input
-                      name="name"
+                      name="ten_tv"
                       placeholder="Your Name"
                       required=""
                       type="text"
                     />
                     <input
-                      name="name"
+                      name="sdt"
                       placeholder="Your Phone Number"
                       required=""
+                    
                       type="tel"
                     />
                     <input
@@ -58,9 +73,15 @@
                       required=""
                       type="email"
                     />
+                    <input
+                      name="pass"
+                      placeholder="Mật khẩu"
+                      required=""
+                      type="password"
+                    />
                   </div>
                   <div class="col-lg-12 text-center">
-                    <button class="primary-btn">Đăng ký</button>
+                    <input type="submit" class="primary-btn" name="submit" value="Đăng Ký">
                   </div>
                 </div>
               </form>

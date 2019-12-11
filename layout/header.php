@@ -1,30 +1,18 @@
-<header class="header_area white-header">
+<?php 
+  $sql = "SELECT * FROM menu WHERE trangthai = 1";
+  $query = mysqli_query($conn,$sql);
+
+ ?>
+   <header class="header_area">
       <div class="main_menu">
-        <div class="search_input" id="search_input_box">
-          <div class="container">
-            <form class="d-flex justify-content-between" method="" action="">
-              <input
-                type="text"
-                class="form-control"
-                id="search_input"
-                placeholder="Search Here"
-              />
-              <button type="submit" class="btn"></button>
-              <span
-                class="ti-close"
-                id="close_search"
-                title="Close Search"
-              ></span>
-            </form>
-          </div>
-        </div>
+      
 
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <a class="navbar-brand" href="index.html">
-              <img class="logo-2" src="img/logo2.png" alt="" />
-            </a>
+            <a class="navbar-brand logo_h" href="index.html"
+              ><img src="img/haha.png" width="300" height="70" 
+            /></a>
             <button
               class="navbar-toggler"
               type="button"
@@ -60,24 +48,35 @@
                     >Khóa học</a
                   >
                   <ul class="dropdown-menu">
+                    <?php while ($row = mysqli_fetch_array($query)) {
+                  ?>
                     <li class="nav-item">
-                      <a class="nav-link" href="index.php?page=list-khoa-hoc">Các khóa học</a>
+                      <a class="nav-link" href="index.php?page=khoa-hoc-dm&id_kh=<?php echo $row['id_kh']; ?>"><?php echo $row['ten_kh']; ?></a>
                     </li>
-                   
+                  <?php } ?>
                   </ul>
                 </li>
-               
-                <li class="nav-item ">
+    
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="index.php?page=lien-he">Liên hệ</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=login"><i class="fa fa-user-circle-o"></i></a>
+                <li class="nav-item submenu dropdown" >
+                  <a href="index.php?page=login" class="btn btn-warning" style="border-radius: 5px; margin-top: 17px; font-weight:bold;"><img src="img/user.png" width="20" height="20"></a>
+                  <?php if (isset($_SESSION['dangnhap'])) {
+                   
+                  ?>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="nav-link">Xin Chào :<p><?php if(isset($_SESSION['dangnhap'])){echo $_SESSION['dangnhap'];} ?></p></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="index.php?page=dangxuat">Đăng Xuất</a>
+                    </li>
+                  </ul>
+                <?php } ?>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link search" id="search">
-                    <i class="ti-search"></i>
-                  </a>
-                </li>
+              
               </ul>
             </div>
           </div>
