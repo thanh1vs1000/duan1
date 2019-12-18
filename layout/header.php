@@ -10,7 +10,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <a class="navbar-brand logo_h" href="index.html"
+            <a class="navbar-brand logo_h" href="index.php"
               ><img src="img/haha.png" width="300" height="70" 
             /></a>
             <button

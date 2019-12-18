@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
     <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
     <link rel="stylesheet" type="text/css" href="css/cssrieng.css">
+    <script type="text/javascript" src="js/jquery.validate.js" ></script>
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -66,9 +67,13 @@
          case 'dangxuat':
         include_once './layout/dangxuat.php';
         break;
-         case 'khoa-hoc-user':
-        include_once './layout/khoa-hoc-cho-user.php';
+         case 'profile':
+        include_once './layout/profile.php';
         break;
+         case 'sua-profile':
+        include_once './layout/sua-profile.php';
+        break;
+
 
       }
     }

@@ -36,7 +36,7 @@
                     <form action="#" id="basicform" method="post" data-parsley-validate="">
                         <div class="form-group">
                             <label for="inputUserName">Tên Danh Mục</label>
-                            <input name="ten_kh" id="ten_kh" type="text" value="" class="form-control">
+                            <input name="ten_kh" id="ten_kh" type="text" value="" class="form-control" required>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">

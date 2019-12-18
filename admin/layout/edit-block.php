@@ -32,7 +32,8 @@ if(isset($_POST['addNew'])){
     
     $dac_biet=$_POST['dac_biet'];
     
-    if(isset($ten_block) && isset($hoc_phi) && isset($so_buoi) && isset($ngay_hoc) && isset($mota) && isset($khuyen_mai) && isset($image) && isset($id_khoahoc) && isset($dac_biet)){
+    if(isset($ten_block) && isset($hoc_phi) && isset($so_buoi) && isset($ngay_hoc) && isset($mota) && isset($khuyen_mai) && isset($image) && isset($id_khoahoc) && isset($dac_biet))
+    {
         move_uploaded_file($tmp_name, 'images/'.$image);
 
     $sql="UPDATE block_khoahoc SET ten_block='$ten_block',hoc_phi='$hoc_phi',khuyen_mai='$khuyen_mai',so_buoi='$so_buoi',ngay_hoc='$ngay_hoc',mota='$mota',image='$image',dac_biet='$dac_biet',id_khoahoc='$id_khoahoc' WHERE id=$id";

@@ -44,12 +44,21 @@ $row= mysqli_fetch_array($query);
                     </div>
 
                 </div>
-                <?php   
+                <?php 
+
                 $sql3 = "SELECT * FROM cmt WHERE id_block=$id ORDER BY id_cmt DESC";
                 $query3 = mysqli_query($conn,$sql3);
-                if (isset($_POST['submit'])) {
+                    if (!isset($_SESSION['dangnhap'])) {
+                        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                Bạn cần đăng nhập để bình luận ! <a href='index.php?page=login'>Đăng Nhập Ngay</a>
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                         </button>
+                        </div>";
+                    }else{
+                    if (isset($_POST['submit']) && isset($_SESSION['dangnhap'])) {
 
-                    $tenkh = $_POST['tenkh'];
+                    $tenkh = $_SESSION['dangnhap'];
                     $ndcmt = $_POST['ndcmt'];
                     $ngaygio = date("Y-m-d H:i:s");
 
@@ -58,8 +67,9 @@ $row= mysqli_fetch_array($query);
                       $query2 = mysqli_query($conn,$sql2);
                       header("location:index.php?page=chi-tiet-khoa-hoc&id=".$id);
 
-                  }
+                } 
               }
+          }
 
               ?>
 
@@ -71,19 +81,7 @@ $row= mysqli_fetch_array($query);
 
 
                 </style>       
-                <div class="feedeback">
-                    <form method="post">
-                        <h6>Đánh giá</h6>
-                        <div class="form-group">
-                            <label> Tên khách hàng:  </label>
-                            <input type="text" class="form-control" name="tenkh" id="name" required="">
-                        </div>
-                        <textarea name="ndcmt" class="form-control" cols="10" rows="10" required=""></textarea>
-                        <div class="mt-10 text-right">
-                            <input type="submit"  name="submit" id="sub" value="Bình luận">
-                        </div>
-                    </form>
-                </div>
+                <h2>Đánh giá từ học viên</h2>
                 <div class="comments-area mb-30">
                     <?php 
                         while ($row2 = mysqli_fetch_array($query3)) {
@@ -110,6 +108,19 @@ $row= mysqli_fetch_array($query);
                         </div>
                     </div>
                 <?php } ?>
+                </div>
+                <div class="feedeback">
+                    <form method="post">
+                        <h6>Đánh giá</h6>
+                        <!-- <div class="form-group">
+                            <label> Tên khách hàng:  </label>
+                            <input type="text" class="form-control" name="tenkh" id="name" required="">
+                        </div> -->
+                        <textarea name="ndcmt" class="form-control" cols="10" rows="10" required=""></textarea>
+                        <div class="mt-10 text-right">
+                            <input type="submit"  name="submit" id="sub" value="Bình luận">
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -192,3 +203,4 @@ $row= mysqli_fetch_array($query);
     <?php 
     include_once"footer.php";
     ?>
+

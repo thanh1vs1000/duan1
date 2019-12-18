@@ -1,3 +1,5 @@
+<script type="text/javascript" src="./../js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="./../js/jquery-3.2.1.min.js"></script>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 <div class="container-fluid">
 			<div class="navbar-header">

@@ -1,6 +1,6 @@
 <?php 
 if (isset($_SESSION['dangnhap'])) {
-  header('location:index.php?page=khoa-hoc-user');}
+  header('location:index.php?page=profile');}
   else{
   if (isset($_POST["dangnhap"])) {
     $email=$_POST["email"];
@@ -10,7 +10,9 @@ if (isset($_SESSION['dangnhap'])) {
     $pass = strip_tags($pass);
     $pass = addslashes($pass);
     if ($email == "" || $pass =="") {
-        echo "email hoặc password bạn không được để trống!";
+        echo "<div class='alert alert-danger' style='width: 850px; margin-left:600px;' role='alert'>
+  Vui lòng nhập email và mật khẩu!
+</div>";
     }else{
         $sql = "SELECT * from thanhvien where email = '$email' and pass = '$pass' ";
         echo $sql;
@@ -45,7 +47,7 @@ if (isset($_SESSION['dangnhap'])) {
   </div>
 
   <!-- Login Form -->
-  <form method="post">
+  <form method="post" id="loginForm">
     <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email">
     <input type="password" id="password" class="fadeIn third" name="pass" placeholder="Mật khẩu">
     <input type="submit" class="fadeIn fourth" name="dangnhap" value="Đăng nhập">

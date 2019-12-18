@@ -32,6 +32,7 @@
 		<tr>
 			<th scope="row">ID</th>
 			<th class="th-lg">Tên thành viên</th>
+			<th class="th-lg">Ảnh đại diện</th>
 			<th class="th-lg">Email</th>
 			<th class="th-lg">Số điện thoại</th>
 			
@@ -50,6 +51,7 @@
 		<tr>
 			<th scope="row"><?php echo $row['id']; ?></th>
 			<td><?php echo $row['ten_tv']; ?></td>
+			<td><img src="images/<?php echo $row['avatar']; ?>" width="50" height="50"></td>
 			<td><?php echo $row['email']; ?></td>
 			<td><?php echo $row['sdt']; ?></td>
 			<td><?php echo $row['pass']; ?></td>

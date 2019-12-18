@@ -1,7 +1,8 @@
 <?php 
-
+if (!isset($_SESSION['dangnhap'])) {
+    header("location:index.php?page=login");
+}else{
 include_once"layout/header.php";
-
 $id=$_GET['id'];
 $sqlDm="SELECT * FROM block_khoahoc WHERE id=$id";
 $queryDm= mysqli_query($conn, $sqlDm);
@@ -73,4 +74,5 @@ $query= mysqli_query($conn, $sql);
 <!--================ End Course Details Area =================-->
 
 <!--================ Start footer Area  =================-->
-<?php include_once"layout/footer.php" ?>
+<?php include_once"layout/footer.php"  ?>
+<?php } ?>

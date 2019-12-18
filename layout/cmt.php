@@ -1,9 +1,11 @@
                 <?php   
-                            if (isset($_POST['submit'])) {
+
+
+                          if (isset($_POST['submit'])) {
                               
-                                        $tenkh = $_POST['tenkh'];
-                                        $feedback = $_POST['feedback'];
-                                        $ngaygio = date("Y-m-d H:i:s");
+                                    $tenkh = $_SESSION['dangnhap'];
+                                    $feedback = $_POST['feedback'];
+                                    $ngaygio = date("Y-m-d H:i:s");
 
                                    if (isset($tenkh) && isset($feedback) && isset($ngaygio)) {
                                       $sql = "INSERT INTO cmt(ten_tv,nd_cmt,ngay_cmt,id_block) VALUES ('$tenkh','$feedback','$ngaygio','$id')";
@@ -20,18 +22,13 @@
                      #name{
                         width: 100%;
                      }
-                     #sub{
-                      /*  width: 200px;
-                        height: 50px;
-                        text-align: center;*/
-                     }
-
+                     
                  </style>       
                         <div class="feedeback">
                             <form method="post" action="index.php?chi-tiet-khoa-hoc&id=<?php echo $id ?>">
                             <h6>Đánh giá</h6>
                             <div class="form-group">
-                                <label> Tên khách hàng:  </label>
+                                <label> Tên khách hàng: </label>
                              <input type="text" class="form-control" name="tenkh" id="name" required="">
                             </div>
                             <textarea name="feedback" class="form-control" cols="10" rows="10" required=""></textarea>
